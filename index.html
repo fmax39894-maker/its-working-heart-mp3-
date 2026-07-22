@@ -1,94 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>It's Working Heart</title>
 
-<style>
-body{
-margin:0;
-font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-color:white;
-}
-
-h1{
-text-align:center;
-padding:18px;
-margin:0;
-font-size:30px;
-}
-
-.list{
-padding:15px;
-}
-
-.song{
-background:rgba(255,255,255,.08);
-padding:15px;
-margin-bottom:12px;
-border-radius:12px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.name{
-font-size:18px;
-font-weight:bold;
-}
-
-.controls button{
-margin-left:6px;
-padding:8px 10px;
-border:none;
-border-radius:8px;
-cursor:pointer;
-font-size:18px;
-}
-
-.play{background:#00c853;color:#fff;}
-.pause{background:#ff5252;color:#fff;}
-.loop{background:#2962ff;color:#fff;}
-
-.visualizer{
-display:flex;
-justify-content:center;
-align-items:flex-end;
-height:80px;
-margin:20px;
-gap:6px;
-}
-
-.bar{
-width:8px;
-height:20px;
-background:#00e5ff;
-border-radius:10px;
-animation:beat .8s infinite;
-animation-play-state:paused;
-}
-
-.bar:nth-child(2){animation-delay:.1s;}
-.bar:nth-child(3){animation-delay:.2s;}
-.bar:nth-child(4){animation-delay:.3s;}
-.bar:nth-child(5){animation-delay:.4s;}
-.bar:nth-child(6){animation-delay:.5s;}
-.bar:nth-child(7){animation-delay:.6s;}
-
-@keyframes beat{
-0%{height:20px;}
-50%{height:70px;}
-100%{height:20px;}
-}
-</style>
-
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
+<header>
 <h1>❤️ It's Working Heart ❤️</h1>
+</header>
 
 <div class="visualizer">
 <div class="bar"></div>
@@ -98,107 +22,98 @@ animation-play-state:paused;
 <div class="bar"></div>
 <div class="bar"></div>
 <div class="bar"></div>
+<div class="bar"></div>
 </div>
 
-<div class="list">
+<div class="songs">
 
+<!-- Song 1 -->
 <div class="song">
-<div class="name">Working Heart Activated</div>
+<span>Working Heart Activated</span>
 
-<div class="controls">
-<button class="play" onclick="playSong(0)">▶</button>
-<button class="pause" onclick="pauseSong(0)">⏸</button>
-<button class="loop" onclick="toggleLoop(0)">🔁</button>
+<div class="buttons">
+<button onclick="togglePlay(0,this)">▶</button>
+<button onclick="toggleLoop(0,this)">🔁</button>
 </div>
 
-<audio id="audio0" src="mp3/heart1.mp3"></audio>
+<audio id="audio0" preload="metadata">
+<source src="mp3/heart1.mp3" type="audio/mpeg">
+</audio>
 </div>
 
+<!-- Song 2 -->
 <div class="song">
-<div class="name">Heartbeat Effect</div>
+<span>Heartbeat Slow</span>
 
-<div class="controls">
-<button class="play" onclick="playSong(1)">▶</button>
-<button class="pause" onclick="pauseSong(1)">⏸</button>
-<button class="loop" onclick="toggleLoop(1)">🔁</button>
+<div class="buttons">
+<button onclick="togglePlay(1,this)">▶</button>
+<button onclick="toggleLoop(1,this)">🔁</button>
 </div>
 
-<audio id="audio1" src="mp3/heart2.mp3"></audio>
+<audio id="audio1" preload="metadata">
+<source src="mp3/heart2.mp3" type="audio/mpeg">
+</audio>
 </div>
 
+<!-- Song 3 -->
 <div class="song">
-<div class="name">Robot Voice</div>
+<span>Heartbeat Fast</span>
 
-<div class="controls">
-<button class="play" onclick="playSong(2)">▶</button>
-<button class="pause" onclick="pauseSong(2)">⏸</button>
-<button class="loop" onclick="toggleLoop(2)">🔁</button>
+<div class="buttons">
+<button onclick="togglePlay(2,this)">▶</button>
+<button onclick="toggleLoop(2,this)">🔁</button>
 </div>
 
-<audio id="audio2" src="mp3/robot.mp3"></audio>
+<audio id="audio2" preload="metadata">
+<source src="mp3/heart3.mp3" type="audio/mpeg">
+</audio>
 </div>
 
-</div>
-
+<!-- Song 4 -->
 <div class="song">
-<div class="name">Robot Voice</div>
+<span>Robot Voice</span>
 
-<div class="controls">
-<button class="play" onclick="playSong(3)">▶</button>
-<button class="pause" onclick="pauseSong(2)">⏸</button>
-<button class="loop" onclick="toggleLoop(2)">🔁</button>
+<div class="buttons">
+<button onclick="togglePlay(3,this)">▶</button>
+<button onclick="toggleLoop(3,this)">🔁</button>
 </div>
 
-<audio id="audio2" src="mp3/robot.mp3"></audio>
+<audio id="audio3" preload="metadata">
+<source src="mp3/robot.mp3" type="audio/mpeg">
+</audio>
+</div>
+
+<!-- Song 5 -->
+<div class="song">
+<span>Emergency Alert</span>
+
+<div class="buttons">
+<button onclick="togglePlay(4,this)">▶</button>
+<button onclick="toggleLoop(4,this)">🔁</button>
+</div>
+
+<audio id="audio4" preload="metadata">
+<source src="mp3/emergency.mp3" type="audio/mpeg">
+</audio>
+</div>
+
+<!-- Song 6 -->
+<div class="song">
+<span>Final Sound</span>
+
+<div class="buttons">
+<button onclick="togglePlay(5,this)">▶</button>
+<button onclick="toggleLoop(5,this)">🔁</button>
+</div>
+
+<audio id="audio5" preload="metadata">
+<source src="mp3/final.mp3" type="audio/mpeg">
+</audio>
 </div>
 
 </div>
 
-<script>
-
-const bars=document.querySelectorAll(".bar");
-
-function startBars(){
-bars.forEach(b=>b.style.animationPlayState="running");
-}
-
-function stopBars(){
-bars.forEach(b=>b.style.animationPlayState="paused");
-}
-
-function playSong(id){
-
-document.querySelectorAll("audio").forEach(a=>{
-if(a.id!="audio"+id){
-a.pause();
-a.currentTime=0;
-}
-});
-
-let a=document.getElementById("audio"+id);
-a.play();
-startBars();
-
-a.onended=()=>{
-stopBars();
-};
-
-}
-
-function pauseSong(id){
-let a=document.getElementById("audio"+id);
-a.pause();
-stopBars();
-}
-
-function toggleLoop(id){
-let a=document.getElementById("audio"+id);
-a.loop=!a.loop;
-
-alert(a.loop?"Loop ON":"Loop OFF");
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>

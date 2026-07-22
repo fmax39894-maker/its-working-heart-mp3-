@@ -2,90 +2,22 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>It's Working Heart</title>
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{
-background:linear-gradient(135deg,#141E30,#243B55);
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-color:#fff;
-}
-.player{
-width:340px;
-background:#ffffff15;
-backdrop-filter:blur(10px);
-padding:20px;
-border-radius:20px;
-text-align:center;
-box-shadow:0 0 20px rgba(0,0,0,.4);
-}
-h2{
-margin-bottom:20px;
-}
-.visualizer{
-display:flex;
-justify-content:center;
-align-items:flex-end;
-height:70px;
-gap:5px;
-margin:20px 0;
-}
-.bar{
-width:8px;
-height:20px;
-background:#00e5ff;
-border-radius:20px;
-animation:beat .7s infinite;
-animation-play-state:paused;
-}
-.bar:nth-child(2){animation-delay:.1s}
-.bar:nth-child(3){animation-delay:.2s}
-.bar:nth-child(4){animation-delay:.3s}
-.bar:nth-child(5){animation-delay:.4s}
-.bar:nth-child(6){animation-delay:.5s}
-
-@keyframes beat{
-0%{height:20px}
-50%{height:65px}
-100%{height:20px}
-}
-
-button{
-padding:12px 18px;
-margin:6px;
-border:none;
-border-radius:10px;
-font-size:17px;
-cursor:pointer;
-}
-
-#playBtn{
-background:#00c853;
-color:#fff;
-}
-
-#loopBtn{
-background:#2962ff;
-color:#fff;
-}
-
-audio{
-width:100%;
-margin-top:20px;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<div class="container">
+
+<h1>❤️ It's Working Heart ❤️</h1>
+
+<!-- Song 1 -->
 <div class="player">
 
-<h2>❤️ It's Working Heart ❤️</h2>
+<h3>Song 1</h3>
 
 <div class="visualizer">
 <div class="bar"></div>
@@ -93,77 +25,130 @@ margin-top:20px;
 <div class="bar"></div>
 <div class="bar"></div>
 <div class="bar"></div>
-<div class="bar"></div>
 </div>
 
-<button id="playBtn">▶ Play</button>
-<button id="loopBtn">🔁 Loop Off</button>
+<button class="playBtn" onclick="togglePlay(0,this)">▶ Play</button>
+<button class="loopBtn" onclick="toggleLoop(0,this)">🔁 Loop Off</button>
 
-<audio id="audio" controls>
+<audio id="audio0">
 <source src="mp3/song1.mp3" type="audio/mpeg">
 </audio>
 
 </div>
 
-<script>
-const audio=document.getElementById("audio");
-const playBtn=document.getElementById("playBtn");
-const loopBtn=document.getElementById("loopBtn");
-const bars=document.querySelectorAll(".bar");
+<!-- Song 2 -->
+<div class="player">
 
-function startBars(){
-bars.forEach(b=>b.style.animationPlayState="running");
-}
+<h3>Song 2</h3>
 
-function stopBars(){
-bars.forEach(b=>b.style.animationPlayState="paused");
-}
+<div class="visualizer">
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+</div>
 
-playBtn.onclick=async function(){
+<button class="playBtn" onclick="togglePlay(1,this)">▶ Play</button>
+<button class="loopBtn" onclick="toggleLoop(1,this)">🔁 Loop Off</button>
 
-try{
+<audio id="audio1">
+<source src="mp3/song2.mp3" type="audio/mpeg">
+</audio>
 
-if(audio.paused){
+</div>
 
-await audio.play();
+<!-- Song 3 -->
+<div class="player">
 
-playBtn.innerHTML="⏸ Pause";
+<h3>Song 3</h3>
 
-startBars();
+<div class="visualizer">
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+</div>
 
-}else{
+<button class="playBtn" onclick="togglePlay(2,this)">▶ Play</button>
+<button class="loopBtn" onclick="toggleLoop(2,this)">🔁 Loop Off</button>
 
-audio.pause();
+<audio id="audio2">
+<source src="mp3/song3.mp3" type="audio/mpeg">
+</audio>
 
-playBtn.innerHTML="▶ Play";
+</div>
 
-stopBars();
+<!-- Song 4 -->
+<div class="player">
 
-}
+<h3>Song 4</h3>
 
-}catch(e){
+<div class="visualizer">
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+</div>
 
-alert("Error: "+e.message);
+<button class="playBtn" onclick="togglePlay(3,this)">▶ Play</button>
+<button class="loopBtn" onclick="toggleLoop(3,this)">🔁 Loop Off</button>
 
-}
+<audio id="audio3">
+<source src="mp3/song4.mp3" type="audio/mpeg">
+</audio>
 
-};
+</div>
 
-loopBtn.onclick=function(){
+<!-- Song 5 -->
+<div class="player">
 
-audio.loop=!audio.loop;
+<h3>Song 5</h3>
 
-loopBtn.innerHTML=audio.loop?"🔁 Loop On":"🔁 Loop Off";
+<div class="visualizer">
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+</div>
 
-};
+<button class="playBtn" onclick="togglePlay(4,this)">▶ Play</button>
+<button class="loopBtn" onclick="toggleLoop(4,this)">🔁 Loop Off</button>
 
-audio.onplay=startBars;
-audio.onpause=stopBars;
-audio.onended=function(){
-playBtn.innerHTML="▶ Play";
-stopBars();
-};
-</script>
+<audio id="audio4">
+<source src="mp3/song5.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+<!-- Song 6 -->
+<div class="player">
+
+<h3>Song 6</h3>
+
+<div class="visualizer">
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+</div>
+
+<button class="playBtn" onclick="togglePlay(5,this)">▶ Play</button>
+<button class="loopBtn" onclick="toggleLoop(5,this)">🔁 Loop Off</button>
+
+<audio id="audio5">
+<source src="mp3/song6.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>

@@ -1,18 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>It's Working Heart</title>
 
-<link rel="stylesheet" href="style.css">
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#111;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.player{
+width:320px;
+padding:20px;
+border-radius:20px;
+background:#222;
+text-align:center;
+box-shadow:0 0 20px rgba(0,255,255,.3);
+}
+
+h2{
+margin-bottom:20px;
+}
+
+button{
+padding:12px 20px;
+margin:8px;
+font-size:18px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+#playBtn{
+background:#00c853;
+color:white;
+}
+
+#loopBtn{
+background:#2962ff;
+color:white;
+}
+
+.visualizer{
+display:flex;
+justify-content:center;
+align-items:flex-end;
+height:70px;
+margin:20px 0;
+gap:5px;
+}
+
+.bar{
+width:8px;
+height:20px;
+background:#00e5ff;
+animation:beat .7s infinite;
+animation-play-state:paused;
+}
+
+.bar:nth-child(2){animation-delay:.1s;}
+.bar:nth-child(3){animation-delay:.2s;}
+.bar:nth-child(4){animation-delay:.3s;}
+.bar:nth-child(5){animation-delay:.4s;}
+
+@keyframes beat{
+0%{height:20px;}
+50%{height:70px;}
+100%{height:20px;}
+}
+</style>
 </head>
 
 <body>
 
-<header>
-<h1>❤️ It's Working Heart ❤️</h1>
-</header>
+<div class="player">
+
+<h2>❤️ It's Working Heart ❤️</h2>
 
 <div class="visualizer">
 <div class="bar"></div>
@@ -20,57 +92,69 @@
 <div class="bar"></div>
 <div class="bar"></div>
 <div class="bar"></div>
-<div class="bar"></div>
-<div class="bar"></div>
-<div class="bar"></div>
 </div>
 
-<!-- Song List (Generated Automatically) -->
-<div class="songs" id="songs"></div>
+<button id="playBtn">▶ Play</button>
+<button id="loopBtn">🔁 Loop Off</button>
+
+<audio id="audio" src="mp3/song1.mp3"></audio>
+
+</div>
 
 <script>
-/* ==================================================
-   CHANGE ONLY THE MP3 FILE NAMES BELOW
-   ================================================== */
 
-const mp3Files = [
-"song1.mp3",
-"song2.mp3",
-"song3.mp3",
-"song4.mp3",
-"song5.mp3",
-"song6.mp3"
-];
+const audio=document.getElementById("audio");
+const playBtn=document.getElementById("playBtn");
+const loopBtn=document.getElementById("loopBtn");
+const bars=document.querySelectorAll(".bar");
 
-/* ================================================== */
+function startBars(){
+bars.forEach(b=>b.style.animationPlayState="running");
+}
 
-const songs = document.getElementById("songs");
+function stopBars(){
+bars.forEach(b=>b.style.animationPlayState="paused");
+}
 
-mp3Files.forEach((file,index)=>{
+playBtn.onclick=()=>{
 
-const name=file.replace(".mp3","");
+if(audio.paused){
 
-songs.innerHTML+=`
-<div class="song">
+audio.play();
 
-<span>${name}</span>
+playBtn.innerHTML="⏸ Pause";
 
-<div class="buttons">
-<button onclick="togglePlay(${index},this)">▶</button>
-<button onclick="toggleLoop(${index})">🔁</button>
-</div>
+startBars();
 
-<audio id="audio${index}">
-<source src="mp3/${file}" type="audio/mpeg">
-</audio>
+}else{
 
-</div>
-`;
+audio.pause();
 
-});
+playBtn.innerHTML="▶ Play";
+
+stopBars();
+
+}
+
+};
+
+loopBtn.onclick=()=>{
+
+audio.loop=!audio.loop;
+
+loopBtn.innerHTML=audio.loop?"🔁 Loop On":"🔁 Loop Off";
+
+};
+
+audio.onended=()=>{
+
+playBtn.innerHTML="▶ Play";
+
+stopBars();
+
+};
+
 </script>
-
-<script src="script.js"></script>
 
 </body>
 </html>

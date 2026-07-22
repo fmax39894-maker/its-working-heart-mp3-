@@ -25,75 +25,50 @@
 <div class="bar"></div>
 </div>
 
-<div class="songs">
+<!-- Song List (Generated Automatically) -->
+<div class="songs" id="songs"></div>
 
+<script>
+/* ==================================================
+   CHANGE ONLY THE MP3 FILE NAMES BELOW
+   ================================================== */
+
+const mp3Files = [
+"song1.mp3",
+"song2.mp3",
+"song3.mp3",
+"song4.mp3",
+"song5.mp3",
+"song6.mp3"
+];
+
+/* ================================================== */
+
+const songs = document.getElementById("songs");
+
+mp3Files.forEach((file,index)=>{
+
+const name=file.replace(".mp3","");
+
+songs.innerHTML+=`
 <div class="song">
-<span>Song 1</span>
+
+<span>${name}</span>
+
 <div class="buttons">
-<button onclick="togglePlay(0,this)">▶</button>
-<button onclick="toggleLoop(0)">🔁</button>
-</div>
-<audio id="audio0">
-<source src="mp3/song1.mp3" type="audio/mpeg">
-</audio>
+<button onclick="togglePlay(${index},this)">▶</button>
+<button onclick="toggleLoop(${index})">🔁</button>
 </div>
 
-<div class="song">
-<span>Song 2</span>
-<div class="buttons">
-<button onclick="togglePlay(1,this)">▶</button>
-<button onclick="toggleLoop(1)">🔁</button>
-</div>
-<audio id="audio1">
-<source src="mp3/song2.mp3" type="audio/mpeg">
+<audio id="audio${index}">
+<source src="mp3/${file}" type="audio/mpeg">
 </audio>
-</div>
-
-<div class="song">
-<span>Song 3</span>
-<div class="buttons">
-<button onclick="togglePlay(2,this)">▶</button>
-<button onclick="toggleLoop(2)">🔁</button>
-</div>
-<audio id="audio2">
-<source src="mp3/song3.mp3" type="audio/mpeg">
-</audio>
-</div>
-
-<div class="song">
-<span>Song 4</span>
-<div class="buttons">
-<button onclick="togglePlay(3,this)">▶</button>
-<button onclick="toggleLoop(3)">🔁</button>
-</div>
-<audio id="audio3">
-<source src="mp3/song4.mp3" type="audio/mpeg">
-</audio>
-</div>
-
-<div class="song">
-<span>Song 5</span>
-<div class="buttons">
-<button onclick="togglePlay(4,this)">▶</button>
-<button onclick="toggleLoop(4)">🔁</button>
-</div>
-<audio id="audio4">
-<source src="mp3/song5.mp3" type="audio/mpeg">
-</audio>
-</div>
-
-<div class="song">
-<span>Song 6</span>
-<div class="buttons">
-<button onclick="togglePlay(5,this)">▶</button>
-<button onclick="toggleLoop(5)">🔁</button>
-</div>
-<audio id="audio5">
-<source src="mp3/song6.mp3" type="audio/mpeg">
-</audio>
-</div>
 
 </div>
+`;
+
+});
+</script>
 
 <script src="script.js"></script>
 
